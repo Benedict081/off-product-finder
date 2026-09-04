@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+
+/*
+ * Tailwind v4 keeps theme configuration in CSS. The @theme block must live at
+ * the top level, so the tokens point at plain custom properties that are then
+ * redefined per colour scheme below. Components reference intent
+ * (`bg-surface`) and dark mode is a matter of re-pointing one variable.
+ */
+@theme {
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+}
+
+:root {
+  --surface: #ffffff;
+  --surface-muted: #f6f7f9;
+  --ink: #14181f;
+  --ink-muted: #5c6672;
+  --line: #e3e6ea;
+  --accent: #1f7a4d;
+  --accent-strong: #17603c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #171c24;
+    --surface-muted: #10141a;
+    --ink: #f2f4f7;
+    --ink-muted: #9aa5b1;
+    --line: #2a323d;
+    --accent: #46b07c;
+    --accent-strong: #5cc290;
+  }
+}
+
+body {
+  background-color: var(--surface-muted);
+  color: var(--ink);
+}

@@ -1,0 +1,31 @@
+{
+  "name": "off-product-finder",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Search Open Food Facts products in 4 languages, with Stripe-gated nutrition details.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=apps/api & npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "build": "npm run build --workspace=apps/api && npm run build --workspace=apps/web",
+    "test": "npm run test --workspace=apps/api",
+    "db:migrate": "npm run db:migrate --workspace=apps/api",
+    "db:seed": "npm run db:seed --workspace=apps/api"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "allowScripts": {
+    "prisma@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "@parcel/watcher@2.6.0": true,
+    "@swc/core@1.16.1": true,
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true,
+    "@prisma/client@6.19.3": true
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "app": {
+    "title": "Food Finder",
+    "tagline": "Zoek verpakte levensmiddelen en zie wat er echt in zit."
+  },
+  "nav": { "search": "Zoeken", "account": "Account" },
+  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
+  "languageSwitcher": { "label": "Taal" },
+  "search": {
+    "placeholder": "Zoek een product, bijvoorbeeld chocolade",
+    "button": "Zoeken",
+    "searching": "Bezig met zoeken…",
+    "resultsCount": "{count, plural, =0 {Geen producten gevonden} one {# product} other {# producten}}",
+    "noResults": "Geen producten gevonden voor “{term}”. Probeer een ander woord of een andere taal.",
+    "error": "We konden Open Food Facts niet bereiken. Probeer het opnieuw.",
+    "minLength": "Voer minstens twee tekens in.",
+    "recent": "Recente zoekopdrachten",
+    "recentEmpty": "Je recente zoekopdrachten verschijnen hier."
+  },
+  "product": {
+    "unnamed": "Naamloos product",
+    "noBrand": "Onbekend merk",
+    "noImage": "Geen foto beschikbaar",
+    "quantity": "Inhoud",
+    "nutriScore": "Nutri-Score",
+    "ingredients": "Ingrediënten",
+    "allergens": "Allergenen",
+    "notAvailable": "Niet beschikbaar bij Open Food Facts",
+    "back": "Terug naar zoeken",
+    "notFound": "We konden dat product niet vinden.",
+    "translationNote": "Weergegeven in het {language} — er is nog geen {requested} versie toegevoegd."
+  },
+  "nutrition": {
+    "title": "Voedingswaarden",
+    "per100g": "Per 100 g",
+    "unavailable": "Open Food Facts heeft geen voedingswaarden voor dit product.",
+    "lockedTitle": "Voedingswaarden zijn voor abonnees",
+    "lockedBody": "Neem een maandabonnement om energie, vetten, suikers, zout en meer te zien voor elk product.",
+    "lockedCta": "Abonneer voor € 4,99 per maand"
+  },
+  "nutrients": {
+    "energy-kcal": "Energie",
+    "fat": "Vetten",
+    "saturated-fat": "waarvan verzadigde vetzuren",
+    "carbohydrates": "Koolhydraten",
+    "sugars": "waarvan suikers",
+    "fiber": "Vezels",
+    "proteins": "Eiwitten",
+    "salt": "Zout",
+    "sodium": "Natrium"
+  },
+  "account": {
+    "title": "Account",
+    "demoNotice": "Deze demo draait als één gebruiker, {email}.",
+    "statusLabel": "Abonnement",
+    "active": "Actief",
+    "inactive": "Geen actief abonnement",
+    "renewsOn": "Wordt verlengd op {date}",
+    "cancelsOn": "Toegang eindigt op {date}",
+    "subscribe": "Abonneer voor € 4,99 per maand",
+    "redirecting": "Stripe wordt geopend…",
+    "checkoutSuccess": "Betaling ontvangen. Het kan even duren voordat je abonnement zichtbaar is.",
+    "checkoutCancelled": "Afrekenen is geannuleerd. Er is niets in rekening gebracht.",
+    "testCard": "Stripe staat in testmodus — betaal met kaartnummer 4242 4242 4242 4242, een datum in de toekomst en een willekeurige CVC."
+  },
+  "common": { "loading": "Laden…", "error": "Er is iets misgegaan." }
+}

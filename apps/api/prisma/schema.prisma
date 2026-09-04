@@ -1,0 +1,78 @@
+// Prisma schema for the Open Food Facts product finder.
+//
+// Scope note: the assignment specifies a single demo user, so there is no auth
+// system here. `User` still exists as a real table because subscriptions and
+// searches belong to someone, and modelling that properly costs nothing now
+// and is what a second user would need later.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  // Stripe customer is created lazily on first checkout, hence nullable.
+  stripeCustomerId String?  @unique @map("stripe_customer_id")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  subscriptions Subscription[]
+  searches      Search[]
+
+  @@map("users")
+}
+
+// Mirrors the Stripe subscription object. Stripe remains the source of truth;
+// this table is a local read-model kept current by the webhook handler so that
+// gating checks are a single indexed query instead of a Stripe API round-trip.
+model Subscription {
+  id                   String    @id @default(cuid())
+  userId               String    @map("user_id")
+  stripeSubscriptionId String    @unique @map("stripe_subscription_id")
+  stripePriceId        String?   @map("stripe_price_id")
+  // Raw Stripe status: active, trialing, past_due, canceled, incomplete, ...
+  status               String
+  currentPeriodEnd     DateTime? @map("current_period_end")
+  cancelAtPeriodEnd    Boolean   @default(false) @map("cancel_at_period_end")
+  createdAt            DateTime  @default(now()) @map("created_at")
+  updatedAt            DateTime  @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, status])
+  @@map("subscriptions")
+}
+
+// Recent searches, per the assignment. `language` is stored alongside the term
+// because "chocolade" in nl and "chocolate" in en are genuinely different
+// searches and replaying one needs to restore the locale it ran in.
+model Search {
+  id          String   @id @default(cuid())
+  userId      String   @map("user_id")
+  term        String   @db.VarChar(191)
+  language    String   @db.VarChar(5)
+  resultCount Int      @default(0) @map("result_count")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+  @@map("searches")
+}
+
+// Stripe retries webhooks and can deliver the same event more than once.
+// Inserting the event id inside the handler's transaction makes replay a no-op:
+// the unique constraint rejects the duplicate before any state is touched.
+model ProcessedEvent {
+  id          String   @id
+  type        String
+  processedAt DateTime @default(now()) @map("processed_at")
+
+  @@map("processed_events")
+}

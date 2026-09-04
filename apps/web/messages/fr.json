@@ -1,0 +1,67 @@
+{
+  "app": {
+    "title": "Food Finder",
+    "tagline": "Recherchez des aliments emballés et voyez ce qu’ils contiennent vraiment."
+  },
+  "nav": { "search": "Recherche", "account": "Compte" },
+  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
+  "languageSwitcher": { "label": "Langue" },
+  "search": {
+    "placeholder": "Rechercher un produit, par exemple chocolat",
+    "button": "Rechercher",
+    "searching": "Recherche en cours…",
+    "resultsCount": "{count, plural, =0 {Aucun produit trouvé} one {# produit} other {# produits}}",
+    "noResults": "Aucun produit ne correspond à « {term} ». Essayez un autre mot ou une autre langue.",
+    "error": "Impossible de joindre Open Food Facts. Veuillez réessayer.",
+    "minLength": "Saisissez au moins deux caractères.",
+    "recent": "Recherches récentes",
+    "recentEmpty": "Vos recherches récentes apparaîtront ici."
+  },
+  "product": {
+    "unnamed": "Produit sans nom",
+    "noBrand": "Marque inconnue",
+    "noImage": "Aucune photo disponible",
+    "quantity": "Quantité",
+    "nutriScore": "Nutri-Score",
+    "ingredients": "Ingrédients",
+    "allergens": "Allergènes",
+    "notAvailable": "Non renseigné sur Open Food Facts",
+    "back": "Retour à la recherche",
+    "notFound": "Ce produit est introuvable.",
+    "translationNote": "Affiché en {language} — aucune version {requested} n’a encore été ajoutée."
+  },
+  "nutrition": {
+    "title": "Valeurs nutritionnelles",
+    "per100g": "Pour 100 g",
+    "unavailable": "Open Food Facts ne dispose d’aucune valeur nutritionnelle pour ce produit.",
+    "lockedTitle": "Les valeurs nutritionnelles sont réservées aux abonnés",
+    "lockedBody": "Abonnez-vous au mois pour voir l’énergie, les matières grasses, les sucres, le sel et plus encore.",
+    "lockedCta": "S’abonner pour 4,99 € par mois"
+  },
+  "nutrients": {
+    "energy-kcal": "Énergie",
+    "fat": "Matières grasses",
+    "saturated-fat": "dont acides gras saturés",
+    "carbohydrates": "Glucides",
+    "sugars": "dont sucres",
+    "fiber": "Fibres",
+    "proteins": "Protéines",
+    "salt": "Sel",
+    "sodium": "Sodium"
+  },
+  "account": {
+    "title": "Compte",
+    "demoNotice": "Cette démo fonctionne avec un seul utilisateur, {email}.",
+    "statusLabel": "Abonnement",
+    "active": "Actif",
+    "inactive": "Aucun abonnement actif",
+    "renewsOn": "Renouvellement le {date}",
+    "cancelsOn": "L’accès prend fin le {date}",
+    "subscribe": "S’abonner pour 4,99 € par mois",
+    "redirecting": "Ouverture de Stripe…",
+    "checkoutSuccess": "Paiement reçu. Votre abonnement peut mettre un instant à apparaître.",
+    "checkoutCancelled": "Le paiement a été annulé. Rien n’a été débité.",
+    "testCard": "Stripe est en mode test — payez avec le numéro 4242 4242 4242 4242, une date future et n’importe quel CVC."
+  },
+  "common": { "loading": "Chargement…", "error": "Une erreur est survenue." }
+}

@@ -1,0 +1,67 @@
+{
+  "app": {
+    "title": "Food Finder",
+    "tagline": "Search packaged foods and see what is really in them."
+  },
+  "nav": { "search": "Search", "account": "Account" },
+  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
+  "languageSwitcher": { "label": "Language" },
+  "search": {
+    "placeholder": "Search for a product, e.g. chocolate",
+    "button": "Search",
+    "searching": "Searching…",
+    "resultsCount": "{count, plural, =0 {No products found} one {# product} other {# products}}",
+    "noResults": "No products matched “{term}”. Try a different word or another language.",
+    "error": "We could not reach Open Food Facts. Please try again.",
+    "minLength": "Enter at least two characters.",
+    "recent": "Recent searches",
+    "recentEmpty": "Your recent searches will appear here."
+  },
+  "product": {
+    "unnamed": "Unnamed product",
+    "noBrand": "Unknown brand",
+    "noImage": "No photo available",
+    "quantity": "Quantity",
+    "nutriScore": "Nutri-Score",
+    "ingredients": "Ingredients",
+    "allergens": "Allergens",
+    "notAvailable": "Not provided by Open Food Facts",
+    "back": "Back to search",
+    "notFound": "We could not find that product.",
+    "translationNote": "Shown in {language} — no {requested} version has been contributed yet."
+  },
+  "nutrition": {
+    "title": "Nutritional values",
+    "per100g": "Per 100 g",
+    "unavailable": "Open Food Facts has no nutritional values for this product.",
+    "lockedTitle": "Nutritional values are for subscribers",
+    "lockedBody": "Subscribe monthly to see energy, fat, sugars, salt and more for every product.",
+    "lockedCta": "Subscribe for €4.99 / month"
+  },
+  "nutrients": {
+    "energy-kcal": "Energy",
+    "fat": "Fat",
+    "saturated-fat": "of which saturates",
+    "carbohydrates": "Carbohydrates",
+    "sugars": "of which sugars",
+    "fiber": "Fibre",
+    "proteins": "Protein",
+    "salt": "Salt",
+    "sodium": "Sodium"
+  },
+  "account": {
+    "title": "Account",
+    "demoNotice": "This demo runs as a single user, {email}.",
+    "statusLabel": "Subscription",
+    "active": "Active",
+    "inactive": "No active subscription",
+    "renewsOn": "Renews on {date}",
+    "cancelsOn": "Access ends on {date}",
+    "subscribe": "Subscribe for €4.99 / month",
+    "redirecting": "Opening Stripe…",
+    "checkoutSuccess": "Payment received. Your subscription may take a moment to appear.",
+    "checkoutCancelled": "Checkout was cancelled. Nothing has been charged.",
+    "testCard": "Stripe is in test mode — pay with card number 4242 4242 4242 4242, any future date and any CVC."
+  },
+  "common": { "loading": "Loading…", "error": "Something went wrong." }
+}
