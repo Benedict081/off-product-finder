@@ -201,44 +201,6 @@ reaches the client bundle.
 
 ---
 
-## Internationalization
-
-There are two separate translation problems here, and they are solved
-differently.
-
-**Interface text** is ours. `next-intl` loads a catalogue per locale from
-`apps/web/messages/*.json`. Locales live in the URL (`/nl/product/…`), so a page
-in a given language is linkable and shareable, and `<html lang>` tracks the
-selection for screen readers. The selector rewrites the current path rather than
-navigating home, and preserves the query string — switching language mid-search
-re-runs the same search in the new language.
-
-**Product data** belongs to Open Food Facts, and its per-language coverage is
-uneven. `pickLocalized()` resolves each field through a fallback chain:
-
-```
-product_name_nl  →  product_name_en  →  product_name  →  any other supported language
-```
-
-English sits second because it is the best lingua franca across the four
-supported locales. The bare `product_name` field comes third: it holds the
-product's own language, which may be Polish or Spanish — better than showing
-nothing, but not something to present as a translation.
-
-So the resolver returns **which language it actually used**, and the UI says so:
-a Dutch user reading an English ingredient list sees a quiet note explaining
-why. This is the honest answer to "where possible" in the requirements.
-
-Two smaller pieces:
-
-- **Nutrient labels** ("of which saturates") are ours, not Open Food Facts'. The
-  API returns stable keys like `saturated-fat` and the frontend owns the
-  translation, so labels are correct in all four languages regardless of what
-  the product record contains.
-- **Stripe Checkout** receives the active locale, so the payment page continues
-  in the user's language instead of snapping back to English.
-
----
 
 ## Automated tests
 
