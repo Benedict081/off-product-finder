@@ -6,6 +6,7 @@ declare global {
   namespace Express {
     interface Request {
       userId?: string;
+      userEmail?: string;
     }
   }
 }
@@ -18,6 +19,7 @@ export async function attachDemoUser(req: Request, _res: Response, next: NextFun
   try {
     const user = await getDemoUser();
     req.userId = user.id;
+    req.userEmail = user.email;
     next();
   } catch (error) {
     next(error);

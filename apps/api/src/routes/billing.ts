@@ -15,7 +15,11 @@ export const billingRouter = Router();
 billingRouter.get('/status', async (req, res, next) => {
   try {
     if (req.userId === undefined) throw new HttpError(401, 'No user in context');
-    res.json(await getSubscriptionStatus(req.userId));
+
+    // The email is echoed back so the account screen can state plainly which
+    // demo user it is acting as — this build has no authentication.
+    const status = await getSubscriptionStatus(req.userId);
+    res.json({ ...status, email: req.userEmail ?? null });
   } catch (error) {
     next(error);
   }
