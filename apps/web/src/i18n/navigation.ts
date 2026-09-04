@@ -5,5 +5,4 @@ import { routing } from './routing';
  * Locale-aware replacements for next/link and next/navigation. Using these
  * means no component has to remember to prefix a href with the current locale.
  */
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation(routing);
+export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);

@@ -1,4 +1,3 @@
-import { notFound } from 'next/navigation';
 import type {
   Locale,
   ProductDetail,
@@ -46,12 +45,27 @@ export function searchProducts(term: string, locale: Locale, page = 1): Promise<
   return apiFetch<SearchResult>(`/api/products/search?${params}`);
 }
 
-/** Renders the 404 page when the barcode is unknown, rather than throwing. */
-export async function getProduct(barcode: string, locale: Locale): Promise<ProductDetail> {
+/**
+ * Returns null when Open Food Facts does not know the barcode, so the page can
+ * render a localized "not found" state.
+ *
+ * This deliberately does not call Next's `notFound()`. That helper renders the
+ * nearest `not-found.tsx`, and in this App Router setup only the root one is
+ * ever reached — which sits outside the `[locale]` segment and therefore has no
+ * translations, producing an English page inside `<html lang="nl">`. Handling
+ * it in the page keeps the message in the user's language and keeps the header
+ * on screen so they can search again. The trade-off is that the response is a
+ * 200 rather than a 404; for a page a person reads, the localized message is
+ * worth more than the status code.
+ */
+export async function getProduct(
+  barcode: string,
+  locale: Locale,
+): Promise<ProductDetail | null> {
   try {
     return await apiFetch<ProductDetail>(`/api/products/${barcode}?lang=${locale}`);
   } catch (error) {
-    if (error instanceof ApiError && error.status === 404) notFound();
+    if (error instanceof ApiError && error.status === 404) return null;
     throw error;
   }
 }
@@ -75,7 +89,13 @@ export async function getSubscriptionStatus(): Promise<SubscriptionStatus> {
     return await apiFetch<SubscriptionStatus>('/api/billing/status');
   } catch {
     // Failing closed keeps the paywall intact if billing status is unavailable.
-    return { active: false, status: null, currentPeriodEnd: null, cancelAtPeriodEnd: false };
+    return {
+      active: false,
+      email: null,
+      status: null,
+      currentPeriodEnd: null,
+      cancelAtPeriodEnd: false,
+    };
   }
 }
 

@@ -10,6 +10,20 @@ apps/
   web/   Next.js + React + Tailwind — localized UI
 ```
 
+### What it does
+
+- **Search** Open Food Facts in English, Dutch, German or French, with the query
+  pointed at that language's analyzer rather than a single global index.
+- **Browse results** as a paged list, narrowable by Nutri-Score, with the term,
+  page and filter all in the URL so any view is shareable.
+- **Read a product** — photo, brand, quantity, allergens, ingredients and the
+  full Nutri-Score scale — in the selected language, with a note whenever a
+  field falls back to another language.
+- **Unlock nutritional values** with a Stripe subscription. Without one the
+  numbers are never sent to the client at all.
+- **Recent searches** are stored per user in MySQL and replay in the language
+  they were run in.
+
 ---
 
 ## Setup
@@ -154,6 +168,30 @@ the newest major. Both `prisma` and `@prisma/client` are pinned to the same exac
 version, because npm's `latest` tag currently points at a Prisma 8 release
 candidate and a mismatched pair fails at runtime.
 
+### "Product not found" is rendered by the page, not by `notFound()`
+
+Next's `notFound()` helper renders the nearest `not-found.tsx`. In this App
+Router setup only the **root** one is ever reached, and it sits outside the
+`[locale]` segment — so an unknown barcode produced an English "Page not found"
+inside `<html lang="nl">`. Placing a `not-found.tsx` at `[locale]/`, and then
+inside the product segment itself, made no difference.
+
+`getProduct()` therefore returns `null` on a 404 and the page renders the message
+itself, in the user's language, keeping the header so they can search again. The
+trade-off is a 200 response where a 404 would be more correct; on a page a person
+reads, in an assignment about internationalization, the right language is worth
+more than the status code.
+
+### One light theme rather than following the system setting
+
+Open Food Facts photography is shot on white and sits badly on a dark ground,
+and the Nutri-Score colours are a published standard specified against white.
+The palette is otherwise near-monochrome, so the grade badges are the only
+saturated colour in the interface and read at a glance. Components reference
+intent (`text-ink`, `border-line`) rather than literal colours, so adding dark
+mode back means redefining those tokens in one media query and changing no
+components.
+
 ### Server components, so the API URL never ships to the browser
 
 Searches and product pages are rendered on the Next.js server, which calls
@@ -233,6 +271,10 @@ no database and runs on a clean checkout.
 - **The search index lags the product database.** search-a-licious is rebuilt
   periodically, so a very recently edited product may return stale fields in
   search results while its detail page is current.
+- **The Nutri-Score filter narrows the current page, not the whole result set.**
+  search-a-licious has no grade facet, so filtering server-side would mean paging
+  through every result. The filter shows a count beside each grade to make its
+  scope obvious.
 - **No caching.** Every request hits Open Food Facts. A cache keyed on
   `(barcode, language)` is the obvious next step; the service is already the
   single choke point for it.

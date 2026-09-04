@@ -43,14 +43,13 @@ export function SubscribeButton({ label }: { label: string }) {
         type="button"
         onClick={onClick}
         disabled={isLoading}
-        className="rounded-lg bg-accent px-5 py-2.5 font-medium text-white transition-colors
-                   hover:bg-accent-strong focus:outline-none focus:ring-2 focus:ring-accent
-                   focus:ring-offset-2 disabled:opacity-60"
+        className="rounded-md bg-accent px-4 py-2 text-sm font-medium text-accent-fg transition-colors
+                   hover:bg-accent-hover disabled:opacity-50"
       >
         {isLoading ? t('redirecting') : label}
       </button>
       {failed && (
-        <p role="alert" className="mt-2 text-sm text-red-600 dark:text-red-400">
+        <p role="alert" className="mt-2 text-sm text-red-600">
           {t('checkoutCancelled')}
         </p>
       )}

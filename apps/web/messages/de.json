@@ -3,9 +3,18 @@
     "title": "Food Finder",
     "tagline": "Verpackte Lebensmittel suchen und sehen, was wirklich drin ist."
   },
-  "nav": { "search": "Suche", "account": "Konto" },
-  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
-  "languageSwitcher": { "label": "Sprache" },
+  "nav": {
+    "account": "Konto"
+  },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
+  "languageSwitcher": {
+    "label": "Sprache"
+  },
   "search": {
     "placeholder": "Produkt suchen, zum Beispiel Schokolade",
     "button": "Suchen",
@@ -15,7 +24,12 @@
     "error": "Open Food Facts ist nicht erreichbar. Bitte versuchen Sie es erneut.",
     "minLength": "Bitte geben Sie mindestens zwei Zeichen ein.",
     "recent": "Letzte Suchanfragen",
-    "recentEmpty": "Ihre letzten Suchanfragen erscheinen hier."
+    "recentEmpty": "Ihre letzten Suchanfragen erscheinen hier.",
+    "allGrades": "Alle",
+    "pagination": "Seitennavigation",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "pageOf": "Seite {page} von {total}"
   },
   "product": {
     "unnamed": "Produkt ohne Namen",
@@ -28,7 +42,8 @@
     "notAvailable": "Bei Open Food Facts nicht hinterlegt",
     "back": "Zurück zur Suche",
     "notFound": "Dieses Produkt konnte nicht gefunden werden.",
-    "translationNote": "Angezeigt auf {language} — eine {requested} Fassung wurde noch nicht beigetragen."
+    "translationNote": "Angezeigt auf {language} — eine {requested} Fassung wurde noch nicht beigetragen.",
+    "nutriScoreHint": "A ist die gesündeste Wahl, E die am wenigsten gesunde."
   },
   "nutrition": {
     "title": "Nährwerte",
@@ -63,5 +78,23 @@
     "checkoutCancelled": "Der Bezahlvorgang wurde abgebrochen. Es wurde nichts berechnet.",
     "testCard": "Stripe läuft im Testmodus — zahlen Sie mit der Kartennummer 4242 4242 4242 4242, einem Datum in der Zukunft und beliebiger Prüfziffer."
   },
-  "common": { "loading": "Wird geladen…", "error": "Etwas ist schiefgelaufen." }
+  "common": {
+    "error": "Etwas ist schiefgelaufen."
+  },
+  "home": {
+    "try": "Probieren Sie",
+    "suggestions": [
+      "schokolade",
+      "joghurt",
+      "nudeln",
+      "olivenöl",
+      "müsli"
+    ],
+    "langsTitle": "Vier Sprachen",
+    "langsBody": "Produktinformationen auf Englisch, Niederländisch, Deutsch und Französisch.",
+    "dataTitle": "Offene Daten",
+    "dataBody": "Namen, Marken, Fotos, Zutaten und Allergene von Open Food Facts.",
+    "nutriTitle": "Vollständige Nährwerte",
+    "nutriBody": "Energie, Fett, Zucker und Salz pro 100 g mit einem Abonnement."
+  }
 }

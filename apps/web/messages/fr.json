@@ -3,9 +3,18 @@
     "title": "Food Finder",
     "tagline": "Recherchez des aliments emballés et voyez ce qu’ils contiennent vraiment."
   },
-  "nav": { "search": "Recherche", "account": "Compte" },
-  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
-  "languageSwitcher": { "label": "Langue" },
+  "nav": {
+    "account": "Compte"
+  },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
+  "languageSwitcher": {
+    "label": "Langue"
+  },
   "search": {
     "placeholder": "Rechercher un produit, par exemple chocolat",
     "button": "Rechercher",
@@ -15,7 +24,12 @@
     "error": "Impossible de joindre Open Food Facts. Veuillez réessayer.",
     "minLength": "Saisissez au moins deux caractères.",
     "recent": "Recherches récentes",
-    "recentEmpty": "Vos recherches récentes apparaîtront ici."
+    "recentEmpty": "Vos recherches récentes apparaîtront ici.",
+    "allGrades": "Tous",
+    "pagination": "Pagination",
+    "previous": "Précédent",
+    "next": "Suivant",
+    "pageOf": "Page {page} sur {total}"
   },
   "product": {
     "unnamed": "Produit sans nom",
@@ -28,7 +42,8 @@
     "notAvailable": "Non renseigné sur Open Food Facts",
     "back": "Retour à la recherche",
     "notFound": "Ce produit est introuvable.",
-    "translationNote": "Affiché en {language} — aucune version {requested} n’a encore été ajoutée."
+    "translationNote": "Affiché en {language} — aucune version {requested} n’a encore été ajoutée.",
+    "nutriScoreHint": "A est le choix le plus sain, E le moins sain."
   },
   "nutrition": {
     "title": "Valeurs nutritionnelles",
@@ -63,5 +78,23 @@
     "checkoutCancelled": "Le paiement a été annulé. Rien n’a été débité.",
     "testCard": "Stripe est en mode test — payez avec le numéro 4242 4242 4242 4242, une date future et n’importe quel CVC."
   },
-  "common": { "loading": "Chargement…", "error": "Une erreur est survenue." }
+  "common": {
+    "error": "Une erreur est survenue."
+  },
+  "home": {
+    "try": "Essayez",
+    "suggestions": [
+      "chocolat",
+      "yaourt",
+      "pâtes",
+      "huile d olive",
+      "céréales"
+    ],
+    "langsTitle": "Quatre langues",
+    "langsBody": "Consultez les informations produit en anglais, néerlandais, allemand et français.",
+    "dataTitle": "Données ouvertes",
+    "dataBody": "Noms, marques, photos, ingrédients et allergènes issus d Open Food Facts.",
+    "nutriTitle": "Valeurs nutritionnelles complètes",
+    "nutriBody": "Énergie, matières grasses, sucres et sel pour 100 g avec un abonnement."
+  }
 }

@@ -22,14 +22,29 @@ export function TranslationNote({
   if (localized.language === requested) return null;
 
   return (
-    <p className="mt-1 text-xs text-ink-muted">
-      {t('translationNote', {
-        // `original` has no name we can look up: the field could hold any
-        // language at all.
-        language:
-          localized.language === 'original' ? '—' : tLanguages(localized.language),
-        requested: tLanguages(requested),
-      })}
+    // An icon and a little more contrast than a plain grey line: this is an
+    // explanation the reader needs, not fine print.
+    <p className="mt-2 flex items-start gap-1.5 text-xs leading-relaxed text-ink-muted">
+      <svg
+        viewBox="0 0 24 24"
+        aria-hidden
+        className="mt-px h-3.5 w-3.5 shrink-0 text-ink-subtle"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      >
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 11v5M12 7.5v.5" />
+      </svg>
+      <span>
+        {t('translationNote', {
+          // `original` has no name we can look up: the field could hold any
+          // language at all.
+          language: localized.language === 'original' ? '—' : tLanguages(localized.language),
+          requested: tLanguages(requested),
+        })}
+      </span>
     </p>
   );
 }

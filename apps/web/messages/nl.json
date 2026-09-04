@@ -3,9 +3,18 @@
     "title": "Food Finder",
     "tagline": "Zoek verpakte levensmiddelen en zie wat er echt in zit."
   },
-  "nav": { "search": "Zoeken", "account": "Account" },
-  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
-  "languageSwitcher": { "label": "Taal" },
+  "nav": {
+    "account": "Account"
+  },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
+  "languageSwitcher": {
+    "label": "Taal"
+  },
   "search": {
     "placeholder": "Zoek een product, bijvoorbeeld chocolade",
     "button": "Zoeken",
@@ -15,7 +24,12 @@
     "error": "We konden Open Food Facts niet bereiken. Probeer het opnieuw.",
     "minLength": "Voer minstens twee tekens in.",
     "recent": "Recente zoekopdrachten",
-    "recentEmpty": "Je recente zoekopdrachten verschijnen hier."
+    "recentEmpty": "Je recente zoekopdrachten verschijnen hier.",
+    "allGrades": "Alle",
+    "pagination": "Paginering",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "pageOf": "Pagina {page} van {total}"
   },
   "product": {
     "unnamed": "Naamloos product",
@@ -28,7 +42,8 @@
     "notAvailable": "Niet beschikbaar bij Open Food Facts",
     "back": "Terug naar zoeken",
     "notFound": "We konden dat product niet vinden.",
-    "translationNote": "Weergegeven in het {language} — er is nog geen {requested} versie toegevoegd."
+    "translationNote": "Weergegeven in het {language} — er is nog geen {requested} versie toegevoegd.",
+    "nutriScoreHint": "A is de gezondste keuze, E de minst gezonde."
   },
   "nutrition": {
     "title": "Voedingswaarden",
@@ -63,5 +78,23 @@
     "checkoutCancelled": "Afrekenen is geannuleerd. Er is niets in rekening gebracht.",
     "testCard": "Stripe staat in testmodus — betaal met kaartnummer 4242 4242 4242 4242, een datum in de toekomst en een willekeurige CVC."
   },
-  "common": { "loading": "Laden…", "error": "Er is iets misgegaan." }
+  "common": {
+    "error": "Er is iets misgegaan."
+  },
+  "home": {
+    "try": "Probeer",
+    "suggestions": [
+      "chocolade",
+      "yoghurt",
+      "pasta",
+      "olijfolie",
+      "muesli"
+    ],
+    "langsTitle": "Vier talen",
+    "langsBody": "Zoek en lees productinformatie in het Engels, Nederlands, Duits en Frans.",
+    "dataTitle": "Open data",
+    "dataBody": "Namen, merken, fotos, ingrediënten en allergenen van Open Food Facts.",
+    "nutriTitle": "Volledige voedingswaarden",
+    "nutriBody": "Energie, vetten, suikers en zout per 100 g met een abonnement."
+  }
 }

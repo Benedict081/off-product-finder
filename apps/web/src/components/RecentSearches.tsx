@@ -2,20 +2,35 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import type { RecentSearch } from '@/lib/types';
 
-/** The MySQL-backed search history for the demo user. */
-export function RecentSearches({ searches }: { searches: RecentSearch[] }) {
+/**
+ * The MySQL-backed search history for the demo user.
+ *
+ * It sits in the sidebar rather than only on the empty state, so a previous
+ * search stays one click away while you are reading results.
+ */
+export function RecentSearches({
+  searches,
+  horizontal = false,
+}: {
+  searches: RecentSearch[];
+  /** The landing page lays these out in a row; the sidebar stacks them. */
+  horizontal?: boolean;
+}) {
   const t = useTranslations('search');
 
   return (
-    <section aria-labelledby="recent-heading">
-      <h2 id="recent-heading" className="mb-2 text-sm font-semibold text-ink-muted">
+    <section aria-labelledby="recent-heading" className="flex flex-col gap-2">
+      <h2
+        id="recent-heading"
+        className="text-[11px] font-semibold uppercase tracking-wider text-ink-subtle"
+      >
         {t('recent')}
       </h2>
 
       {searches.length === 0 ? (
         <p className="text-sm text-ink-muted">{t('recentEmpty')}</p>
       ) : (
-        <ul className="flex flex-wrap gap-2">
+        <ul className={`flex flex-wrap gap-1.5 ${horizontal ? '' : 'lg:flex-col lg:gap-0.5'}`}>
           {searches.map((search) => (
             <li key={search.id}>
               {/*
@@ -25,13 +40,20 @@ export function RecentSearches({ searches }: { searches: RecentSearch[] }) {
               <Link
                 href={`/?q=${encodeURIComponent(search.term)}`}
                 locale={search.language}
-                className="inline-flex items-center gap-2 rounded-full border border-line
-                           bg-surface px-3 py-1.5 text-sm text-ink transition-colors
-                           hover:border-accent hover:text-accent focus:outline-none
-                           focus:ring-2 focus:ring-accent"
+                className={`flex items-center gap-2 text-sm text-ink-muted transition-colors
+                            hover:bg-surface-muted hover:text-ink ${
+                              horizontal
+                                ? 'rounded-full border border-line px-3 py-1 hover:border-ink'
+                                : 'rounded-md px-2 py-1.5'
+                            }`}
               >
-                {search.term}
-                <span className="text-xs uppercase text-ink-muted">{search.language}</span>
+                <span className="truncate">{search.term}</span>
+                <span
+                  className="ml-auto shrink-0 rounded border border-line px-1 text-[10px]
+                             font-medium uppercase tracking-wide text-ink-subtle"
+                >
+                  {search.language}
+                </span>
               </Link>
             </li>
           ))}

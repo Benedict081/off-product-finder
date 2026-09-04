@@ -2,43 +2,95 @@
 
 /*
  * Tailwind v4 keeps theme configuration in CSS. The @theme block must live at
- * the top level, so the tokens point at plain custom properties that are then
- * redefined per colour scheme below. Components reference intent
- * (`bg-surface`) and dark mode is a matter of re-pointing one variable.
+ * the top level, so the tokens point at plain custom properties. Components
+ * reference intent (`text-ink`, `border-line`) rather than literal colours.
  */
 @theme {
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-canvas: var(--canvas);
   --color-surface: var(--surface);
   --color-surface-muted: var(--surface-muted);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
   --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
   --color-accent: var(--accent);
-  --color-accent-strong: var(--accent-strong);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-fg: var(--accent-fg);
 }
 
+/*
+ * A single light theme, committed to deliberately rather than following the
+ * viewer's system setting.
+ *
+ * Two reasons. Product photography from Open Food Facts is shot on white
+ * backgrounds and sits badly on a dark ground, and the Nutri-Score scale is a
+ * published standard whose colours are specified against white — a dark ground
+ * shifts how they read. Everything here is therefore near-white and separated
+ * by hairlines and space rather than by fills, so the grade badges and the
+ * photos are the only things carrying colour.
+ */
 :root {
+  --canvas: #ffffff;
   --surface: #ffffff;
-  --surface-muted: #f6f7f9;
-  --ink: #14181f;
-  --ink-muted: #5c6672;
-  --line: #e3e6ea;
-  --accent: #1f7a4d;
-  --accent-strong: #17603c;
-}
+  --surface-muted: #f6f6f7;
+  --ink: #18181b;
+  --ink-muted: #6b6b76;
+  --ink-subtle: #a1a1ab;
+  --line: #ebebee;
+  --line-strong: #d9d9de;
+  --accent: #18181b;
+  --accent-hover: #38383f;
+  --accent-fg: #ffffff;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface: #171c24;
-    --surface-muted: #10141a;
-    --ink: #f2f4f7;
-    --ink-muted: #9aa5b1;
-    --line: #2a323d;
-    --accent: #46b07c;
-    --accent-strong: #5cc290;
-  }
+  color-scheme: light;
 }
 
 body {
-  background-color: var(--surface-muted);
+  background-color: var(--canvas);
   color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings are set tighter than the browser default, which is loose for UI. */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/*
+ * One focus style for the whole app. Keyboard users get a clearly visible ring;
+ * mouse users do not get a ring on click, which is what :focus-visible buys.
+ */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--canvas);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * The landing page has its own large search field. Hiding the toolbar copy
+ * there leaves one obvious place to type, without the layout needing to know
+ * which route is rendering.
+ */
+body:has(#home-hero) [data-header-search] {
+  display: none;
 }

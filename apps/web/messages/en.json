@@ -3,9 +3,18 @@
     "title": "Food Finder",
     "tagline": "Search packaged foods and see what is really in them."
   },
-  "nav": { "search": "Search", "account": "Account" },
-  "languages": { "en": "English", "nl": "Nederlands", "de": "Deutsch", "fr": "Français" },
-  "languageSwitcher": { "label": "Language" },
+  "nav": {
+    "account": "Account"
+  },
+  "languages": {
+    "en": "English",
+    "nl": "Nederlands",
+    "de": "Deutsch",
+    "fr": "Français"
+  },
+  "languageSwitcher": {
+    "label": "Language"
+  },
   "search": {
     "placeholder": "Search for a product, e.g. chocolate",
     "button": "Search",
@@ -15,7 +24,12 @@
     "error": "We could not reach Open Food Facts. Please try again.",
     "minLength": "Enter at least two characters.",
     "recent": "Recent searches",
-    "recentEmpty": "Your recent searches will appear here."
+    "recentEmpty": "Your recent searches will appear here.",
+    "allGrades": "All",
+    "pagination": "Pagination",
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {total}"
   },
   "product": {
     "unnamed": "Unnamed product",
@@ -28,7 +42,8 @@
     "notAvailable": "Not provided by Open Food Facts",
     "back": "Back to search",
     "notFound": "We could not find that product.",
-    "translationNote": "Shown in {language} — no {requested} version has been contributed yet."
+    "translationNote": "Shown in {language} — no {requested} version has been contributed yet.",
+    "nutriScoreHint": "A is the healthiest choice, E the least."
   },
   "nutrition": {
     "title": "Nutritional values",
@@ -63,5 +78,23 @@
     "checkoutCancelled": "Checkout was cancelled. Nothing has been charged.",
     "testCard": "Stripe is in test mode — pay with card number 4242 4242 4242 4242, any future date and any CVC."
   },
-  "common": { "loading": "Loading…", "error": "Something went wrong." }
+  "common": {
+    "error": "Something went wrong."
+  },
+  "home": {
+    "try": "Try",
+    "suggestions": [
+      "chocolate",
+      "yoghurt",
+      "pasta",
+      "olive oil",
+      "cereal"
+    ],
+    "langsTitle": "Four languages",
+    "langsBody": "Search and read product information in English, Dutch, German and French.",
+    "dataTitle": "Open data",
+    "dataBody": "Names, brands, photos, ingredients and allergens from Open Food Facts.",
+    "nutriTitle": "Full nutrition",
+    "nutriBody": "Energy, fat, sugars and salt per 100 g with a subscription."
+  }
 }

@@ -48,6 +48,8 @@ export interface RecentSearch {
 
 export interface SubscriptionStatus {
   active: boolean;
+  /** The demo user this build acts as. There is no authentication. */
+  email: string | null;
   status: string | null;
   currentPeriodEnd: string | null;
   cancelAtPeriodEnd: boolean;

@@ -5,10 +5,9 @@ import type { NextConfig } from 'next';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  images: {
-    // Open Food Facts serves every product photo from this host.
-    remotePatterns: [{ protocol: 'https', hostname: 'images.openfoodfacts.org' }],
-  },
+  // Next 16 writes AGENTS.md and CLAUDE.md into this folder on every dev run.
+  // They are generated boilerplate, not part of this project.
+  agentRules: false,
 };
 
 export default withNextIntl(nextConfig);
